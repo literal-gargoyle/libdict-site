@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+/* Custom UI Components */
+@layer components {
+  /* Flashcard styles */
+  .flashcard {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+  
+  .flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+  
+  .flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+  }
+  
+  .flashcard-back {
+    transform: rotateY(180deg);
+  }
+  
+  /* Animations */
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  /* Playful Theme Extensions */
+  .bg-gradient-playful {
+    @apply bg-gradient-to-br from-lib-primary via-purple-500 to-purple-600;
+  }
+
+  .text-gradient-playful {
+    @apply bg-gradient-to-r from-lib-primary to-purple-400 text-transparent bg-clip-text;
+  }
+
+  .btn-playful {
+    @apply bg-lib-primary hover:bg-lib-primary-dark text-white rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1;
+  }
+
+  .card-playful {
+    @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all border-2 border-lib-primary/10 hover:border-lib-primary/30;
+  }
+}
