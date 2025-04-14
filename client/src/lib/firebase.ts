@@ -3,13 +3,11 @@ import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult } fr
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBxEWg6PC_NwI_Mxe7airdZuHGdTi9LCUw",
-  authDomain: "libdict.firebaseapp.com",
-  projectId: "libdict",
-  storageBucket: "libdict.firebasestorage.app",
-  messagingSenderId: "594833254780",
-  appId: "1:594833254780:web:7e6dd9d4badeb68c089cf9",
-  measurementId: "G-B20VX1QP8P"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.firebaseapp.com`,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.appspot.com`,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
